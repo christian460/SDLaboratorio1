@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+option java_package = "converter";
+option java_multiple_files = true;
+
+service Converter {
+
+  // Conversiones existentes
+  rpc CelsiusToFahrenheit (TemperatureRequest)
+      returns (ConvertResponse);
+
+  rpc SolesToDollars (MoneyRequest)
+      returns (ConvertResponse);
+
+  rpc KilometersToMiles (DistanceRequest)
+      returns (ConvertResponse);
+
+  // Nuevas conversiones
+  rpc KilogramsToPounds (WeightRequest)
+      returns (ConvertResponse);
+
+  rpc LitersToGallons (VolumeRequest)
+      returns (ConvertResponse);
+
+  rpc MetersToFeet (LengthRequest)
+      returns (ConvertResponse);
+}
+
+message TemperatureRequest {
+  double celsius = 1;
+}
+
+message MoneyRequest {
+  double soles = 1;
+}
+
+message DistanceRequest {
+  double kilometers = 1;
+}
+
+message WeightRequest {
+  double kilograms = 1;
+}
+
+message VolumeRequest {
+  double liters = 1;
+}
+
+message LengthRequest {
+  double meters = 1;
+}
+
+message ConvertResponse {
+  double result = 1;
+  string message = 2;
+}
